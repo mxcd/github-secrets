@@ -77,3 +77,30 @@ docker run --rm -v ${PWD}/secrets:/usr/app/secrets mxcd/github-secrets -p -d sec
 ```
 
 ### With GitHub Actions
+
+It is required to at least have the age key stored as GitHub Actions secret in order to run github-secrets in a GitHub Actions workflow.  
+In this scenario, it is assumed that the secrets are stored in a `./secrets` directory and that the only purpose of the repository is to store secrets
+and distribute them via CI workflow.
+
+```yaml
+name: Distribute GitHub Actions secrets
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "./secrets"
+  workflow_dispatch:
+  
+jobs:
+  build:
+    name: Distribute Secrets
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v1
+      - name: Run github-secrets
+        run: |
+          docker run --rm -v ${PWD}/secrets:/usr/app/secrets mxcd/github-secrets -p -d secrets -k ${{ secrets.AGE_KEY }}
+```
