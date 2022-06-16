@@ -28,6 +28,7 @@ jobs:
 
       - name: Test
         run: |
+          pnpm install -g ts-node
           pnpm run main -p -d ./secrets -k ${{ secrets.AGE_KEY }}
 
   build:
