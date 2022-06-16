@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsc && cp package.json dist/package.json && cp pnpm-lock.yaml dist/pnpm-lock.yaml && cd dist && pnpm install --production"
+    "build": "tsc && cp package.json dist/package.json && cp pnpm-lock.yaml dist/pnpm-lock.yaml && cd dist && pnpm install --production",
+    "main": "ts-node src/index.ts"
   },
   "keywords": [],
   "author": "",

@@ -18,9 +18,10 @@ const ENVIRONMENT_VARIABLES = [
 ];
 
 parser.add_argument(`-u`, `--api-url`, { help: `GitHub API URL` });
-parser.add_argument(`-s`, `--secrets-file`, { help: `single secrets file` });
-parser.add_argument(`-d`, `--directory`, { help: `secrets directory` });
+parser.add_argument(`-t`, `--access-token`, { help: `GitHub access token` });
 parser.add_argument(`-k`, `--age-key`, { help: `age key` });
+parser.add_argument(`-f`, `--secrets-file`, { help: `single secrets file` });
+parser.add_argument(`-d`, `--secrets-directory`, { help: `secrets directory` });
 parser.add_argument(`-p`, `--purge`, { action: `store_true`, default: false, help: `purge old secrets` });
 const args = parser.parse_args();
 
@@ -37,7 +38,7 @@ for (const variable of ENVIRONMENT_VARIABLES) {
   }
 }
 
-if (!args.secrets_file && !args.directory) {
+if (!args.secrets_file && !args.secrets_directory) {
   console.error(`Please specify a secrets file or directory.`);
   process.exit(1);
 }

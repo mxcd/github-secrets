@@ -1,6 +1,11 @@
 dist/
 test/
 age-test-secret-key.txt
+*.secret.yml
+*.secret.yaml
+*.secret.env
+*.secret.txt
+
 
 # Created by https://www.toptal.com/developers/gitignore/api/node
 # Edit at https://www.toptal.com/developers/gitignore?templates=node

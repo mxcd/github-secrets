@@ -25,7 +25,6 @@ export async function applySecrets(args: any, destination: Destination) {
   }
 
   const publicKey = await getPublicKey(args, destination);
-  console.log(`Public key is ${publicKey}`);
   const secrets = await getSecrets(args, destination);
   console.log(`Found ${secrets.total_count} existing secrets`);
 
@@ -45,7 +44,6 @@ export async function applySecrets(args: any, destination: Destination) {
       }
 
       if (!keyPresent) {
-        console.log(`Deleting secret ${secret.name}`);
         await deleteSecret(args, destination, secret.name);
       }
     }

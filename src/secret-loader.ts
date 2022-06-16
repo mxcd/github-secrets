@@ -29,21 +29,21 @@ export async function loadSecrets(args: any): Promise<Secrets> {
     mergeDeep(secrets, yaml.load(secret));
   }
 
-  if (args.directory) {
-    if (!fs.existsSync(args.directory)) {
-      console.error(`Secrets directory '${args.directory}' does not exist`);
+  if (args.secrets_directory) {
+    if (!fs.existsSync(args.secrets_directory)) {
+      console.error(`Secrets directory '${args.secrets_directory}' does not exist`);
       process.exit(1);
     }
-    if (!fs.statSync(args.directory).isDirectory()) {
-      console.error(`Secrets directory '${args.directory}' is not a directory`);
+    if (!fs.statSync(args.secrets_directory).isDirectory()) {
+      console.error(`Secrets directory '${args.secrets_directory}' is not a directory`);
       process.exit(1);
     }
 
-    const files = fs.readdirSync(args.directory).filter((file: string) => {
+    const files = fs.readdirSync(args.secrets_directory).filter((file: string) => {
       return file.endsWith(`.yaml`) || file.endsWith(`.yml`);
     });
     for (const file of files) {
-      const secret = await decryptSecretFile(`${args.directory}/${file}`, args.age_key);
+      const secret = await decryptSecretFile(`${args.secrets_directory}/${file}`, args.age_key);
       mergeDeep(secrets, yaml.load(secret));
     }
   }
