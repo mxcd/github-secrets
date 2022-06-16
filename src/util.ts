@@ -1,5 +1,3 @@
-import { sync as commandExistsSync } from "command-exists";
-
 export interface Args {
   api_url?: string;
   access_token?: string;
@@ -7,13 +5,6 @@ export interface Args {
   secrets_file?: string;
   directory?: string;
   purge: boolean;
-}
-
-export function checkCommands() {
-  if (!commandExistsSync(`sops`)) {
-    console.error(`sops is not installed. Please install sops.`);
-    return false;
-  }
 }
 
 function isObject(item: object) {

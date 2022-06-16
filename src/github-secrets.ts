@@ -27,8 +27,7 @@ export async function applySecrets(args: any, destination: Destination) {
   const publicKey = await getPublicKey(args, destination);
   console.log(`Public key is ${publicKey}`);
   const secrets = await getSecrets(args, destination);
-  console.log(`Found ${secrets.total_count} secrets`);
-  console.log(JSON.stringify(secrets.secrets, null, 2));
+  console.log(`Found ${secrets.total_count} existing secrets`);
 
   for (const key in destination.secrets) {
     const value: string = destination.secrets[key];

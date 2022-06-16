@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc && cp package.json dist/package.json && cp pnpm-lock.yaml dist/pnpm-lock.yaml && cd dist && pnpm install --production"
   },
   "keywords": [],
   "author": "",
@@ -12,7 +13,6 @@
   "dependencies": {
     "argparse": "^2.0.1",
     "axios": "^0.27.2",
-    "command-exists": "^1.2.9",
     "js-yaml": "^4.1.0",
     "libsodium-wrappers": "^0.7.10",
     "tweetsodium": "^0.0.6"

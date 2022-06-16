@@ -1,12 +1,11 @@
 import { ArgumentParser } from "argparse";
 
-import { checkCommands } from "./util";
 import { loadSecrets } from "./secret-loader";
 import { applySecrets } from "./github-secrets";
 
-if (!checkCommands) {
-  process.exit(1);
-}
+// if (!checkCommands()) {
+//   process.exit(1);
+// }
 
 const parser = new ArgumentParser({
   description: `Argparse example`,
