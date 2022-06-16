@@ -27,7 +27,7 @@ jobs:
           version: 7.1.9
           run_install: |
             - recursive: true
-              args: [--frozen-lockfile, --strict-peer-dependencies]
+              args: [--no-frozen-lockfile, --strict-peer-dependencies]
             - args: [--global, typescript]
 
       - name: Test
